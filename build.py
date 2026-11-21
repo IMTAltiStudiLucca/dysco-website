@@ -6,6 +6,7 @@ Only the Python standard library is used. Output files (index.html, people.html,
 are written next to this script and must be committed, since GitHub Pages serves them.
 """
 import datetime
+import hashlib
 import html
 import json
 import re
@@ -313,6 +314,7 @@ def render(p):
             "SLOGAN": e(SITE["slogan"]), "NAV": nav, "MAIN": p["main"], "FOOTER": footer,
             "PAGEFILE": "index.html" if p["page"] == "index" else p["page"] + ".html"}
     subs["CANONICAL"] = SITE["site_url"]
+    subs["ASSETV"] = hashlib.md5((ROOT / "assets" / "style.css").read_bytes() + (ROOT / "assets" / "site.js").read_bytes()).hexdigest()[:8]
     subs["OGIMAGE"] = SITE["site_url"] + SITE["share_image"]
     subs["JSONLD"] = jsonld() if p["page"] == "index" else ""
     out = TEMPLATE
