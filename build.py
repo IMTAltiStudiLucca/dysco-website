@@ -330,7 +330,16 @@ def main():
         first = first or p
         body = p["main"]
         if n["page"] != "index":
-            body = body.replace("<h1>", "<h2>", 1).replace("</h1>", "</h2>", 1)
+            body = body.replace("<h1>", "<@T@>", 1).replace("</h1>", "</@T@>", 1)
+            # headings inside a section sit one level below the section title
+            body = re.sub(r"<h3(?=[ >])", "<h4", body)
+            body = body.replace("</h3>", "</h4>")
+            body = re.sub(r'<h2 class="center">', '<h3 class="sub center">', body)
+            body = re.sub(r"<h2(?=[ >])", '<h3 class="sub"', body)
+            body = body.replace("</h2>", "</h3>")
+            body = body.replace("<@T@>", "<h2>").replace("</@T@>", "</h2>")
+            if "<h3" not in body:  # no subsection headings, so cards sit directly under the title
+                body = re.sub(r"<h4(?=[ >])", "<h3", body).replace("</h4>", "</h3>")
         sid = "home" if n["page"] == "index" else n["page"]
         sections.append(f'<section class="page-section" id="{sid}">{body}</section>')
     page = {"title": first["title"], "desc": first["desc"], "main": "\n".join(sections), "page": "index"}

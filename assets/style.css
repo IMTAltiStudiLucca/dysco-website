@@ -11,7 +11,7 @@
     --accent: #6db3f2; --accent-hover: #9ccbf7; --accent-soft: #172a42; }
 }
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 body { margin: 0; background: var(--bg); color: var(--text); font: 1rem/1.65 var(--font);
   -webkit-font-smoothing: antialiased; }
 img { max-width: 100%; display: block; }
@@ -79,14 +79,14 @@ figcaption a { color: inherit; }
 .g4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 .card { position: relative; background: var(--card); border: 1px solid var(--border);
   border-radius: var(--radius); padding: 22px; transition: border-color .15s, transform .15s, box-shadow .15s; }
-.card h3 { margin-bottom: .4em; }
+.card h3, .card h4 { margin-bottom: .4em; }
 .card p { margin: 0 0 .8em; color: var(--muted); font-size: .95rem; }
 .card .prose p { color: var(--text); }
 .card.soft { background: transparent; }
 .link-card { display: block; color: var(--text); text-decoration: none; }
 .link-card:hover { border-color: var(--accent); transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(11,74,143,.12); color: var(--text); }
-.link-card h3 { color: var(--accent); }
+.link-card h3, .link-card h4 { color: var(--accent); }
 .tag { text-transform: uppercase; letter-spacing: .08em; font-size: .7rem !important; font-weight: 650;
   color: var(--muted); margin-bottom: .5em !important; }
 .arrow { position: absolute; top: 18px; right: 20px; color: var(--accent); opacity: 0; transition: opacity .15s; }
@@ -108,7 +108,7 @@ figcaption a { color: inherit; }
   padding: 14px; text-align: center; display: flex; flex-direction: column; }
 .person .role { margin: 14px 0 2px; text-transform: uppercase; letter-spacing: .05em; font-size: .72rem;
   font-weight: 650; color: var(--muted); }
-.person h3 { margin: 0 0 8px; font-family: var(--serif); font-style: italic; font-size: 1.1rem; color: var(--accent); }
+.person h4 { margin: 0 0 8px; font-family: var(--serif); font-style: italic; font-size: 1.1rem; color: var(--accent); }
 .photo { aspect-ratio: 1 / 1; border-radius: 10px; overflow: hidden; background: var(--accent-soft); }
 .photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 22%; }
 .avatar { width: 100%; height: 100%; display: grid; place-items: center; font-size: 2.4rem;
@@ -196,8 +196,8 @@ body { font-feature-settings: "kern", "liga"; }
 .site-header.scrolled { box-shadow: 0 6px 24px rgba(16, 24, 40, .07); }
 .nav a { transition: background .2s, color .2s; }
 
-.wordmark { background: linear-gradient(120deg, var(--accent) 30%, #4b9be0 100%); -webkit-background-clip: text;
-  background-clip: text; -webkit-text-fill-color: transparent; }
+/* solid colour: gradient text gets clipped by iOS Safari */
+.wordmark { padding: .06em .08em .1em 0; }
 .hero .slogan, .hero-links { animation: rise .7s .12s both cubic-bezier(.2, .7, .2, 1); }
 .hero-links { animation-delay: .24s; }
 .wordmark { animation: rise .7s both cubic-bezier(.2, .7, .2, 1); }
@@ -250,7 +250,7 @@ body { font-feature-settings: "kern", "liga"; }
   .person { display: grid; grid-template-columns: 84px 1fr; column-gap: 14px; text-align: left; align-items: start; padding: 12px; }
   .person .photo { grid-row: 1 / span 4; }
   .person .role { margin: 0 0 2px; }
-  .person h3 { margin: 0 0 4px; font-size: 1.05rem; }
+  .person h4 { margin: 0 0 4px; font-size: 1.05rem; }
     .person .pills { margin: 0; }
   .person:hover { transform: none; }
 }
@@ -315,5 +315,18 @@ body { font-feature-settings: "kern", "liga"; }
 @media (max-width: 560px) { .people { gap: 12px; } .person { flex-basis: 100%; } }
 
 /* names on faculty cards link to the personal webpage */
-.person h3 a { color: inherit; text-decoration: none; }
-.person h3 a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.person h4 a { color: inherit; text-decoration: none; }
+.person h4 a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+/* heading levels inside sections */
+h3.sub { font-family: var(--serif); font-size: 1.5rem; font-weight: 700; margin: 0 0 .6em; }
+h4 { font-size: 1.1rem; font-weight: 650; line-height: 1.2; margin: 0 0 .5em; }
+.person h4 { margin: 0 0 8px; font-family: var(--serif); font-style: italic; font-size: 1.1rem; color: var(--accent); }
+.tag + h4 { margin-top: 0; }
+
+/* the mobile menu checkbox stays reachable by keyboard */
+@media (max-width: 800px) {
+  .menu-toggle { display: block; position: absolute; right: 20px; top: 50%; width: 42px; height: 42px;
+    margin: -21px 0 0; opacity: 0; cursor: pointer; z-index: 2; }
+  .menu-toggle:focus-visible + .burger { outline: 2px solid var(--accent); border-radius: 6px; }
+}
