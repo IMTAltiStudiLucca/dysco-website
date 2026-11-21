@@ -1,0 +1,60 @@
+{
+  "name": "DYSCO",
+  "slogan": "Dynamical Systems, Control, and Optimization",
+  "institution": "IMT School for Advanced Studies Lucca",
+  "institution_url": "https://www.imtlucca.it",
+  "description": "DYSCO is the research unit in Dynamical Systems, Control, and Optimization at the IMT School for Advanced Studies Lucca, Italy. It works on model predictive control, embedded numerical optimization, system identification and machine learning.",
+  "address": [
+    "Piazza San Francesco, 19",
+    "55100 Lucca, Italy"
+  ],
+  "email": "dysco@imtlucca.it",
+  "phone": "+39 0583 4326600",
+  "nav": [
+    {
+      "label": "Home",
+      "page": "index"
+    },
+    {
+      "label": "People",
+      "page": "people"
+    },
+    {
+      "label": "Research",
+      "page": "research"
+    },
+    {
+      "label": "Software",
+      "page": "software"
+    },
+    {
+      "label": "COLLab",
+      "page": "collab"
+    },
+    {
+      "label": "Teaching",
+      "page": "teaching"
+    },
+    {
+      "label": "Join us",
+      "page": "join"
+    },
+    {
+      "label": "Contact",
+      "page": "contact"
+    }
+  ],
+  "people_groups": [
+    "Faculty",
+    "Postdocs",
+    "PhD Students",
+    "Alumni"
+  ],
+  "site_url": "https://dysco.imtlucca.it/",
+  "share_image": "content/images/san-francesco-from-guinigi.jpg",
+  "people_list_groups": [
+    "Postdocs",
+    "PhD Students",
+    "Alumni"
+  ]
+}

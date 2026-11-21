@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://dysco.imtlucca.it/sitemap.xml

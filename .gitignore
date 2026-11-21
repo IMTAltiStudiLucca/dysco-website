@@ -1,0 +1,17 @@
+# Operating system and editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+
+# Python
+__pycache__/
+*.pyc
+
+# Local assistant notes, not part of the site
+CLAUDE.md
+.claude/
+
+# Untouched full-size originals stay outside the repository
+*_original.*
