@@ -153,8 +153,10 @@ def person_card(meta):
     if meta.get("email"):
         links.append(("Email", "mailto:" + meta["email"]))
     pills = "".join(f'<a href="{e(u)}"{ext(u)} aria-label="{l} of {e(name)}">{l}</a>' for l, u in links)
+    heading = (f'<h3><a href="{e(meta["website"])}"{ext(meta["website"])}>{e(name)}</a></h3>'
+               if meta.get("website") else f'<h3>{e(name)}</h3>')
     return (f'<article class="person">{img}<p class="role">{e(meta.get("role", ""))}</p>'
-            f'<h3>{e(name)}</h3><p class="pills">{pills}</p></article>')
+            + heading + f'<p class="pills">{pills}</p></article>')
 
 
 def slug(s):
