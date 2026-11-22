@@ -59,7 +59,6 @@ There are deliberately no news, events or publication pages, since nobody mainta
 Code is under the MIT license (see `LICENSE`). The previous version of the site is kept in the `umbertos-version` branch.
 
 - `content/images/san-francesco-from-guinigi.jpg` by Zairon, CC BY 4.0, Wikimedia Commons.
-- `content/images/san-francesco-cloister.jpg` by Sailko, CC BY 3.0, Wikimedia Commons.
 - `content/images/imt-cloister.jpg` is a photo of the San Francesco cloister provided by the group. The photographer is to be confirmed.
 - `content/images/mpc-blackboard.jpg` comes from the previous DYSCO website.
 - `assets/logo.svg` and `assets/iris-ico.ico` belong to their owners and are not covered by the MIT license. They are currently unused.
